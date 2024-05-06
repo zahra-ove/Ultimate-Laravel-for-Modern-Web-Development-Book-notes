@@ -15,3 +15,10 @@
    `composer global about`
 
 4. Artisan is the powerful Command-Line Interface (CLI) included with Laravel.
+
+5. Types of Routers\
+   There are four main types of routers which are extensively used in Laravel:
+   - Redirect routes
+   - View routes
+   - Route list
+   - Fallback routes
