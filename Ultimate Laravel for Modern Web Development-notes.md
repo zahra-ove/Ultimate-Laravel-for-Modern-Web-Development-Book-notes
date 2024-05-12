@@ -71,3 +71,69 @@ return redirect()->action(
 ```
 
 
+12. ypu can create `custom if statement` in laravel balde template engine. how? 😊 
+
+step 1: define your custom if statement in AppServiceProvider
+
+```php
+use Illuminate\Support\Facades\Blade;
+
+class AppServiceProvider extends ServiceProvider
+{
+    // code commented for brevity
+
+    public function boot()
+    {
+        Blade::if('booktype', function ($booktype) {
+            if (in_array($booktype, ['fiction', 'nonfiction'])) {
+                return true;
+            } 
+
+            return false;
+        });
+    }
+}
+```
+
+step 2: then use it
+
+```php
+@booktype('fiction')
+    // This is a fiction book
+@elsebooktype('nonfiction')
+    // This is a non-fiction book
+@else
+    // This book falls into some other category
+@endbooktype
+
+
+// or
+
+
+@unlessbooktype('nonfiction')
+    // This is a non-fiction book
+@endbooktype
+```
+
+
+13. in addition of `@foreach` loop, we also have `@forelse` loop in laravel, which is almost like @foreach loop except that it checks if the given array is empty or not. like this:\
+
+```php
+@forelse ($employees as $employee)
+   <li>{{ $employee->name }}</li>
+@empty
+   <p>No employees</p>
+@endforelse
+```
+
+
+14.  The continuation or break condition may also be included in the directive declaration:
+
+```php
+@foreach ($employees as $employee)
+   @continue($employee->type == 1)
+   <li>{{ $employee->name }}</li>
+   @break($employee->number == 5)
+@endforeach
+```
+
