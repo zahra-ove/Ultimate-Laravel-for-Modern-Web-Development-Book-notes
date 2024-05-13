@@ -23,21 +23,5 @@
    - Route list
    - Fallback routes
 
-6. Route Prefixes\
 
-```php
-Route::prefix(‘hr’)->group(function () {
-   Route::get(‘/employees’, function () {
-   // Matches The “/hr/employees” URL
-   });
-});
-```
-
-```php
-Route::name(‘admin.’)->group(function () {
-   Route::get(‘/city’, function () {
-   // Route assigned name “admin.city”
-   })->name(‘city’);
-});
-```
 
